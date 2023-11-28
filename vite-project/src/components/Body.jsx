@@ -18,6 +18,10 @@ export default function Body(){
                 setLight("ON");
 
             }}>켜기</button>
+
+            <button onClick={()=>{
+                setLight("OFF");
+            }}>끄기</button>
         </div>
     );
 }
