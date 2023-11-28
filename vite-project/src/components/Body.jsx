@@ -1,5 +1,21 @@
 import {useState} from "react"
 
+function Lightbulb({light}){
+    return <>
+        {light === 'ON' ? 
+        <div style={{backgroundColor:"orange"}}>ON</div>
+        :
+        <div style={{backgroundColor:"gray"}}>OFF</div>}
+    </>
+}
+
+function StaticLightbulb(){
+    return <>
+         <div style={{backgroundColor:"gray"}}>OFF</div>    
+    </>
+}
+
+
 
 export default function Body(){
 
@@ -13,7 +29,7 @@ export default function Body(){
 
         <div className="body">
             <h1>{light}</h1>
-
+            <Lightbulb light={light} />
             <button onClick={()=>{
                 setLight("ON");
 
