@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useRef, useState} from "react"
 export default function Body2(){
 
     const [state, setState] = useState({
@@ -7,6 +7,10 @@ export default function Body2(){
         bio : ""
 
     })
+
+    // 레퍼런스 객체 생성
+    const titleRef = useRef()
+
 
 
     
@@ -37,11 +41,23 @@ export default function Body2(){
         });
     }
 
+    const onSubmit = () => {
+        console.log(state);
+        
+        if(state.title === ""){
+            alert("제목은 필수 입력값입니다.")
+            titleRef.current.focus();
+            return;
+        }
+
+
+    }
+
 
 
     return <>
         <div>
-            검색 : <input value={state.title} onChange={onChangeTitle}></input>
+            검색 : <input value={state.title} onChange={onChangeTitle} ref={titleRef}></input>
             {state.title.length}/600
         </div>
 
@@ -58,6 +74,10 @@ export default function Body2(){
             <textarea value={state.bio} onChange={onChangeBio}>
 
             </textarea>
+        </div>
+
+        <div>
+            <button onClick={onSubmit}>회원가입</button>
         </div>
 
     </>
